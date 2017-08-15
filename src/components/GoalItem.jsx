@@ -7,18 +7,26 @@ class GoalItem extends Component {
         //add to complete goal on the database
         //Remove this goal from the goal reference
         const {email} = this.props.user;
-        const {title, serverKey} = this.props.goal;
+        const {title, items, serverKey} = this.props.goal;
         goalRef.child(serverKey).remove();
-        completeGoalRef.push({email, title});
+        completeGoalRef.push({email, title, items});
     }
     render(){
-        //console.log('this.props.goal', this.props.goal);
-        const{ email, title } = this.props.goal;
+        console.log('this.props.goal', this.props.goal);
+        const{ email, title, items } = this.props.goal;
         return(
             <div className="row">
                 <div className="col-sm-6" style={{ margin: '5px'}}>
                     <strong>{title}</strong>
+                    <div>
+                        {
+                            items.map((item, idx) =>(
+                                <div key={idx}>{item.name}</div>
+                            ))   
+                        }
+                    </div>
                 </div>
+                
                 <div className="col-sm-3" style={{ margin: '5px'}}>
                     <span style={{marginRight: '10px'}}> - submitted by: <em>{email}</em></span>
                 </div>

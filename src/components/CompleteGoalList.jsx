@@ -9,8 +9,8 @@ class CompletedGoalList extends Component{
         completeGoalRef.on('value', snap => {
             let completeGoals =[];
             snap.forEach(completeGoal => {
-                const { email, title } = completeGoal.val();
-                completeGoals.push({email, title})
+                const { email, title, items } = completeGoal.val();
+                completeGoals.push({email, title, items})
             })
             this.props.setCompleted(completeGoals);
         })
@@ -25,10 +25,17 @@ class CompletedGoalList extends Component{
             <div>
                 {
                     this.props.completeGoals.map((completeGoal, index) => {
-                        const { email, title} = completeGoal;
+                        const { email, title, items} = completeGoal;
                         return (
                             <div key={index}>
                                 <strong>{title}</strong> - Achieved by <em>{email}</em>
+                                <div>
+                                    {
+                                        items.map((item, idx) =>(
+                                            <div key={idx}>{item.name}</div>
+                                        ))   
+                                    }
+                                </div>
                             </div>
                         )
                     })
