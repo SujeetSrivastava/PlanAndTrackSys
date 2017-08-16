@@ -27,7 +27,7 @@ class CompletedGoalList extends Component{
                     this.props.completeGoals.map((completeGoal, index) => {
                         const { email, title, items} = completeGoal;
                         return (
-                            <div key={index}>
+                            <div className="row" style={{border: '1px solid lightgray'}} key={index} >
                                 <strong>{title}</strong> - Achieved by <em>{email}</em>
                                 <div>
                                     {

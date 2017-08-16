@@ -1,4 +1,4 @@
-import { SIGNED_IN, SET_GOALS, SET_COMPLETED } from '../constants';
+import { SIGNED_IN, SET_GOALS, SET_COMPLETED, SET_INPROGRESS } from '../constants';
 
 export function logUser(email){
     const action = {
@@ -20,6 +20,14 @@ export function setCompleted(completedGoals){
     const action = {
         type: SET_COMPLETED,
         completedGoals
+    }
+    return action;
+}
+
+export function setInProgress(inprogressGoals){
+    const action = {
+        type: SET_INPROGRESS,
+        inprogressGoals
     }
     return action;
 }

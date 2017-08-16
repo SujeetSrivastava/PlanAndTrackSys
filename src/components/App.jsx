@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { firebaseApp } from '../firebase';
 import AddGoal from './AddGoal';
 import GoalList from './GoalList';
+import GoalListInProgress from './GoalListInProgress'
 import CompletedGoalList from './CompleteGoalList';
 
 class App extends Component {
@@ -31,13 +32,18 @@ class App extends Component {
                         </div>
                     </div>
                     <div className="row" style={{marginBottom: '20px', border: '1px solid lightgray'}}>
-                        <div className="col-sm-6" style={{border: '1px solid lightgray', borderBottom:'none'}}>
-                            <h4>Your Target</h4>
+                        <div className="col-sm-4" style={{border: '1px solid lightgray', borderBottom:'none'}}>
+                            <h4>Target</h4>
                             <hr />
                             <GoalList />
                         </div> 
-                        <div className="col-sm-6" style={{border: '1px solid lightgray', borderBottom:'none'}}>
-                        <h4> Target Achieved</h4>
+                        <div className="col-sm-4" style={{border: '1px solid lightgray', borderBottom:'none'}}>
+                            <h4>Progress</h4>
+                            <hr />
+                            <GoalListInProgress />
+                        </div> 
+                        <div className="col-sm-4" style={{border: '1px solid lightgray', borderBottom:'none'}}>
+                        <h4> Achieved</h4>
                         <hr/>
                         <CompletedGoalList />
                         </div>
